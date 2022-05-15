@@ -1,5 +1,5 @@
 # PHP
-FROM php:7.4-apache
+FROM php:8.1-apache
 
 # Modules apache
 RUN a2enmod headers deflate expires rewrite
@@ -18,7 +18,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Imagick pour WordPress (https://webapplicationconsultant.com/docker/how-to-install-imagick-in-php-docker/)
 RUN apt-get install -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*
-RUN printf "\n" | pecl install imagick
+# RUN printf "\n" | pecl install imagick
 RUN docker-php-ext-enable imagick
 
 # Virtualhost
